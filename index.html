@@ -1,0 +1,1526 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Understanding ITP — Immune Thrombocytopenia</title>
+  <meta name="description" content="A clear, compassionate guide to Immune Thrombocytopenia (ITP) for everyday people — what it is, what it can feel like, and why awareness matters." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* =========================================================
+   Understanding ITP — styles
+   Clean, modern, subtly futuristic. High readability first.
+   ========================================================= */
+
+:root{
+  --bg: #060812;
+  --bg2:#0b1130;
+  --card: rgba(255,255,255,0.06);
+  --card2: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.12);
+  --text: rgba(255,255,255,0.90);
+  --muted: rgba(255,255,255,0.68);
+  --faint: rgba(255,255,255,0.45);
+  --accent: #7ee3ff;
+  --accent2:#a6ffcf;
+  --warn: #ffb36b;
+  --shadow: 0 18px 50px rgba(0,0,0,0.45);
+  --radius: 18px;
+  --radius2: 26px;
+  --max: 1100px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; scroll-behavior: smooth; }
+body{
+  margin:0;
+  padding-top: 72px;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(126,227,255,0.10), transparent 60%),
+              radial-gradient(900px 700px at 90% 20%, rgba(166,255,207,0.08), transparent 60%),
+              radial-gradient(1000px 800px at 60% 80%, rgba(126,227,255,0.06), transparent 65%),
+              linear-gradient(180deg, var(--bg), var(--bg2));
+  overflow-x:hidden;
+}
+
+#bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  opacity:0.85;
+}
+
+.container{
+  width:min(var(--max), calc(100% - 48px));
+  margin:0 auto;
+}
+
+.skip{
+  position:absolute;
+  left:-999px;
+  top:8px;
+  padding:10px 12px;
+  background: rgba(0,0,0,0.8);
+  color:white;
+  border-radius: 10px;
+  border:1px solid var(--border);
+  z-index:9999;
+}
+.skip:focus{ left:10px; }
+
+.sr-only{
+  position:absolute;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden; clip: rect(0,0,0,0);
+  white-space:nowrap; border:0;
+}
+
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:50;
+  backdrop-filter: blur(14px);
+  background: rgba(6,8,18,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.topbar__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  letter-spacing:0.2px;
+}
+.brand__mark{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(126,227,255,0.20), rgba(166,255,207,0.18));
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+.brand__name{ font-size: 15px; color: rgba(255,255,255,0.92); }
+
+.nav{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.nav a{
+  color: var(--muted);
+  text-decoration:none;
+  font-size: 13px;
+  padding:9px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: 180ms ease;
+}
+.nav a:hover, .nav a:focus{
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.10);
+  outline:none;
+}
+
+.navbtn{
+  display:none;
+  position:relative;
+  width:42px;
+  height:42px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  cursor:pointer;
+}
+.navbtn__lines{
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:18px;
+  height:2px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 999px;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 0 rgba(255,255,255,0.85), 0 12px 0 rgba(255,255,255,0.85);
+}
+
+.hero{
+  position:relative;
+  padding:64px 0 38px;
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap:26px;
+  align-items:start;
+}
+.kicker{
+  color: rgba(126,227,255,0.92);
+  font-weight:600;
+  letter-spacing:0.6px;
+  text-transform:uppercase;
+  font-size:12px;
+  margin:0 0 10px;
+}
+.hero h1{
+  font-size: clamp(34px, 4.2vw, 52px);
+  line-height: 1.05;
+  margin:0 0 14px;
+}
+.lead{
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 18px;
+  max-width: 60ch;
+}
+.hero__cta{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin: 16px 0 18px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: linear-gradient(135deg, rgba(126,227,255,0.20), rgba(166,255,207,0.12));
+  color: rgba(255,255,255,0.92);
+  text-decoration:none;
+  font-weight:600;
+  box-shadow: var(--shadow);
+  transition: transform 140ms ease, background 200ms ease;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn--ghost{
+  background: rgba(255,255,255,0.05);
+  box-shadow:none;
+}
+.hero__badges{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.badge{
+  flex: 1 1 160px;
+  padding: 12px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+}
+.badge__title{
+  color: var(--faint);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.badge__value{
+  font-weight: 650;
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+}
+
+.hero__panel{
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.panel__header{
+  padding: 18px 18px 12px;
+  background: linear-gradient(135deg, rgba(126,227,255,0.10), rgba(166,255,207,0.06));
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.panel__header h2{ margin:0 0 6px; font-size: 16px; }
+.muted{ color: var(--muted); }
+.panel__body{ padding: 16px 18px 18px; }
+.label{ display:block; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.mono{ font-family: var(--mono); color: rgba(255,255,255,0.90); }
+
+input[type="range"]{
+  width:100%;
+  accent-color: var(--accent);
+}
+
+.risk{
+  margin-top: 14px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding: 12px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.20);
+}
+.risk__meter{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  overflow:hidden;
+  position:relative;
+}
+.risk__meter span{
+  position:absolute;
+  left:0; right:0;
+  bottom:0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(126,227,255,0.85), rgba(166,255,207,0.70));
+  transition: height 240ms ease;
+}
+.risk__title{ font-weight:650; margin-bottom: 4px; }
+
+.note{
+  margin-top: 14px;
+  padding: 12px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.86);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.note--warn{
+  border-color: rgba(255,179,107,0.35);
+  background: rgba(255,179,107,0.08);
+}
+
+.hero__fade{
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height: 64px;
+  background: linear-gradient(180deg, transparent, rgba(6,8,18,0.95));
+  pointer-events:none;
+}
+
+.section{
+  padding: 60px 0;
+}
+.section--alt{
+  background: radial-gradient(900px 600px at 10% 30%, rgba(126,227,255,0.08), transparent 62%),
+              radial-gradient(900px 650px at 90% 10%, rgba(166,255,207,0.06), transparent 62%);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.section__head h2{
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+.subtitle{
+  margin:0 0 18px;
+  color: var(--muted);
+  max-width: 70ch;
+  line-height:1.6;
+}
+.cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+.card{
+  padding: 16px 16px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+}
+.card h3{
+  margin:0 0 10px;
+  font-size: 16px;
+}
+.card p{
+  margin: 0 0 10px;
+  color: rgba(255,255,255,0.86);
+  line-height:1.7;
+  font-size: 14px;
+}
+.card p:last-child{ margin-bottom: 0; }
+
+.grid2{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:14px;
+}
+.list{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.86);
+  line-height:1.75;
+  font-size: 14px;
+}
+.list li{ margin: 6px 0; }
+
+.callout{
+  margin-top: 18px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding: 16px 16px;
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(135deg, rgba(126,227,255,0.08), rgba(166,255,207,0.04));
+}
+.callout__icon{
+  width:38px; height:38px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  flex: 0 0 auto;
+}
+.callout__content h3{ margin:0 0 6px; font-size: 16px; }
+.callout__content p{ margin:0; color: rgba(255,255,255,0.86); line-height:1.7; font-size: 14px; }
+
+.pillrow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 10px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.86);
+  font-size: 13px;
+}
+.pill--link{
+  text-decoration:none;
+  transition: 160ms ease;
+}
+.pill--link:hover{ transform: translateY(-1px); border-color: rgba(126,227,255,0.35); }
+
+.timeline{
+  margin-top: 18px;
+  padding: 16px 16px;
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+}
+.timeline__item{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding: 10px 0;
+}
+.timeline__item + .timeline__item{
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.dot{
+  width:10px;
+  height:10px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: rgba(126,227,255,0.85);
+  box-shadow: 0 0 0 5px rgba(126,227,255,0.10);
+  flex: 0 0 auto;
+}
+.timeline h4{ margin:0 0 4px; font-size: 14px; }
+.timeline p{ margin:0; }
+
+.accordion{ display:grid; gap:10px; }
+.acc{
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  overflow:hidden;
+}
+.acc summary{
+  list-style:none;
+  cursor:pointer;
+  padding: 14px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-weight:650;
+  color: rgba(255,255,255,0.92);
+}
+.acc summary::-webkit-details-marker{ display:none; }
+.acc__chev{
+  display:inline-block;
+  transform: rotate(90deg);
+  color: rgba(255,255,255,0.70);
+  transition: transform 180ms ease;
+  font-size: 22px;
+  line-height: 1;
+}
+.acc[open] .acc__chev{ transform: rotate(-90deg); }
+.acc__body{
+  padding: 0 14px 14px;
+  color: rgba(255,255,255,0.86);
+  line-height:1.7;
+  font-size: 14px;
+}
+.faq{ display:grid; gap:10px; }
+
+.dedication{
+  background: radial-gradient(1100px 700px at 50% 40%, rgba(126,227,255,0.10), transparent 65%),
+              linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+}
+.dedication__card{
+  padding: 22px 20px;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  box-shadow: var(--shadow);
+  max-width: 780px;
+}
+.dedication__quote{
+  margin:0 0 12px;
+  font-size: 15px;
+  line-height:1.7;
+  color: rgba(255,255,255,0.86);
+  border-left: 2px solid rgba(126,227,255,0.70);
+  padding-left: 12px;
+}
+
+.footer{
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.18);
+  padding: 28px 0 22px;
+}
+.footer__inner{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+}
+.brand--footer .brand__mark{ width:30px; height:30px; border-radius: 12px; }
+.footer__links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
+}
+.footer__links a{
+  color: var(--muted);
+  text-decoration:none;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  font-size: 13px;
+}
+.footer__links a:hover{ color: var(--text); border-color: rgba(126,227,255,0.30); }
+.footer__fineprint{
+  margin-top: 16px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.footer__fineprint p{ margin:0; font-size: 12px; }
+
+.reveal{
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 620ms ease, transform 620ms ease;
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .btn, .pill--link:hover{ transform:none; }
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .hero__grid{ grid-template-columns: 1fr; }
+  .cards{ grid-template-columns: 1fr; }
+  .grid2{ grid-template-columns: 1fr; }
+  .navbtn{ display:inline-flex; align-items:center; justify-content:center; }
+  .nav{
+    position:absolute;
+    right:24px;
+    top:64px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:6px;
+    padding: 12px;
+    width: min(320px, calc(100vw - 48px));
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(6,8,18,0.82);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow);
+    transform: translateY(-10px);
+    opacity:0;
+    pointer-events:none;
+    transition: 180ms ease;
+  }
+  .nav a{ width:100%; }
+  .nav.is-open{
+    transform: translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+  .footer__inner{ flex-direction:column; align-items:flex-start; }
+  .footer__links{ justify-content:flex-start; }
+}
+
+
+/* Anchor offset for fixed header */
+section[id]{ scroll-margin-top: 92px; }
+
+/* Nav active indicator */
+.nav a{ position: relative; }
+.nav a.is-active{
+  color: rgba(255,255,255,0.94);
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(126,227,255,0.25);
+}
+.nav a.is-active::after{
+  content:"";
+  position:absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(126,227,255,0.85), rgba(166,255,207,0.75));
+  box-shadow: 0 0 0 6px rgba(126,227,255,0.08);
+}
+
+/* Scroll progress bar */
+.scrollProgress{
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+}
+.scrollProgress > div{
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(126,227,255,0.90), rgba(166,255,207,0.80));
+  box-shadow: 0 0 18px rgba(126,227,255,0.25);
+  transition: width 80ms linear;
+}
+
+/* Subtle futuristic interactions */
+.card{
+  transition: transform 180ms ease, border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+.card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(126,227,255,0.22);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.32);
+}
+:focus-visible{
+  outline: 2px solid rgba(126,227,255,0.55);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* Floating section orb (small "you are here" indicator) */
+.sectionOrb{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(6,8,18,0.70);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.40);
+  user-select:none;
+}
+.sectionOrb__dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(126,227,255,0.95), rgba(166,255,207,0.70));
+  box-shadow: 0 0 0 6px rgba(126,227,255,0.10), 0 0 18px rgba(126,227,255,0.22);
+}
+.sectionOrb__label{
+  font-size: 12px;
+  color: rgba(255,255,255,0.86);
+  letter-spacing: 0.2px;
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 980px){
+  .sectionOrb{ right: 12px; bottom: 12px; }
+}
+
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Subtle animated background (canvas). -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand" aria-label="Site name">
+        <span class="brand__mark" aria-hidden="true">⟡</span>
+        <span class="brand__name">Understanding ITP</span>
+      </div>
+
+      <button class="navbtn" id="navbtn" aria-expanded="false" aria-controls="nav">
+        <span class="navbtn__lines" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <nav id="nav" class="nav" aria-label="Primary">
+        <a href="#what">What is ITP?</a>
+        <a href="#body">How it affects the body</a>
+        <a href="#signs">Signs & symptoms</a>
+        <a href="#diagnosis">Diagnosis</a>
+        <a href="#treatment">Treatment</a>
+        <a href="#living">Living with ITP</a>
+        <a href="#faq">FAQ</a>
+        <a href="#help">Get help</a>
+      </nav>
+    </div>
+    <div class="scrollProgress" aria-hidden="true"><div id="scrollProgress"></div></div>
+</header>
+
+  <main id="main">
+
+    <div class="sectionOrb" id="sectionOrb" aria-live="polite">
+      <div class="sectionOrb__dot" aria-hidden="true"></div>
+      <div class="sectionOrb__label" id="sectionOrbLabel">Top</div>
+    </div>
+    
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="kicker reveal">A gentle guide for everyday people</p>
+          <h1 class="reveal">Immune Thrombocytopenia (ITP).</h1>
+          <p class="lead reveal">
+            ITP can be confusing and scary. This site is here to help you understand what it is,
+            what it can feel like, and why awareness matters — in plain language, without the jargon.
+          </p>
+
+          <div class="hero__cta reveal">
+            <a class="btn" href="#what">Start learning</a>
+            <a class="btn btn--ghost" href="#dedication">Read the dedication</a>
+          </div>
+
+          <div class="hero__badges reveal" aria-label="Quick facts">
+            <div class="badge">
+              <div class="badge__title">What it is</div>
+              <div class="badge__value">An immune system mix‑up</div>
+            </div>
+            <div class="badge">
+              <div class="badge__title">Main issue</div>
+              <div class="badge__value">Low platelets</div>
+            </div>
+            <div class="badge">
+              <div class="badge__title">Why it matters</div>
+              <div class="badge__value">Bleeding risk</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__panel reveal" role="region" aria-label="Interactive: Platelets and bleeding risk">
+          <div class="panel__header">
+            <h2>Platelets in one minute</h2>
+            <p class="muted">Move the slider to see how platelet levels can change the story.</p>
+          </div>
+
+          <div class="panel__body">
+            <label for="plt" class="label">
+              Platelet count: <span id="pltVal" class="mono">145,000</span>
+            </label>
+            <input id="plt" type="range" min="0" max="500000" value="145000" step="5000" />
+
+            <div class="risk" aria-live="polite">
+              <div class="risk__meter" aria-hidden="true"><span id="riskFill"></span></div>
+              <div class="risk__text">
+                <div id="riskTitle" class="risk__title">Typical range</div>
+                <div id="riskDesc" class="muted">Many people with ITP live full lives — the goal is to reduce bleeding risk and feel safe.</div>
+              </div>
+            </div>
+
+            <div class="note">
+              <strong>Important:</strong> This is educational, not a diagnosis tool. Decisions about risk and treatment are personal and should be made with a clinician who knows the full picture.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__fade" aria-hidden="true"></div>
+    </section>
+
+    <section id="what" class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>What is ITP?</h2>
+          <p class="subtitle">A condition where the immune system mistakenly targets platelets.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h3>The simple idea</h3>
+            <p>
+              <strong>Platelets</strong> are tiny cell pieces in your blood that help stop bleeding.
+              In <strong>Immune Thrombocytopenia (ITP)</strong>, the immune system gets confused and
+              marks platelets as if they were a threat. The body may remove them too quickly, and sometimes also
+              struggles to make enough new ones.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <h3>What ITP is not</h3>
+            <p>
+              ITP is <strong>not</strong> caused by “weak blood” or something you did wrong.
+              It is usually <strong>not</strong> contagious, and many people never find a single clear trigger.
+              It can happen to children or adults.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <h3>Why awareness matters</h3>
+            <p>
+              Low platelets can increase bleeding risk — sometimes subtly, sometimes seriously.
+              Recognizing symptoms early, asking the right questions, and having a plan can help people feel safer.
+            </p>
+          </article>
+        </div>
+
+        <div class="callout reveal" role="note">
+          <div class="callout__icon" aria-hidden="true">✦</div>
+          <div class="callout__content">
+            <h3>Plain-language definition</h3>
+            <p>
+              <strong>ITP is an immune system “misfire” that can lower platelet levels.</strong>
+              Treatment focuses on lowering bleeding risk and supporting a stable platelet count — while respecting each person’s life and goals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="body" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>How it affects the body</h2>
+          <p class="subtitle">Two main ways platelet levels can drop.</p>
+        </div>
+
+        <div class="grid2">
+          <article class="card reveal">
+            <h3>1) Platelets are removed too fast</h3>
+            <p>
+              In ITP, the immune system can make “tagging” proteins (often antibodies) that stick to platelets.
+              The body’s cleanup cells — especially in the spleen and sometimes the liver — may then remove those platelets sooner than they should.
+            </p>
+            <p class="muted">Think: the body’s security team accidentally labels the wrong people.</p>
+          </article>
+
+          <article class="card reveal">
+            <h3>2) The body may make fewer platelets</h3>
+            <p>
+              Platelets are made in the bone marrow by larger cells called megakaryocytes.
+              In some people with ITP, the same immune confusion can also disrupt platelet production,
+              making it harder to “keep up” with the losses.
+            </p>
+            <p class="muted">Think: fewer new platelets are entering the system.</p>
+          </article>
+        </div>
+
+        <div class="timeline reveal" aria-label="A simple storyline of ITP">
+          <div class="timeline__item">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <h4>Immune system gets triggered</h4>
+              <p class="muted">Sometimes after an infection, sometimes without a clear reason.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <h4>Platelets get “flagged”</h4>
+              <p class="muted">The body treats them like they shouldn’t be there.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <h4>Platelet count drops</h4>
+              <p class="muted">Bleeding symptoms can appear, especially when platelets are very low.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <h4>Treatment aims for safety</h4>
+              <p class="muted">Not everyone needs the same approach — it depends on symptoms, lifestyle, and the overall situation.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="signs" class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Signs & symptoms</h2>
+          <p class="subtitle">Some signs are obvious. Others are easy to miss.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Common signs</h3>
+            <ul class="list">
+              <li>Easy bruising, bruises that appear without a clear bump</li>
+              <li>Tiny red or purple dots on the skin (often on legs), sometimes called a “speckled rash”</li>
+              <li>Nosebleeds or bleeding gums</li>
+              <li>Heavier or longer menstrual bleeding</li>
+              <li>Bleeding that’s harder to stop after small cuts</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>When symptoms can be serious</h3>
+            <ul class="list">
+              <li>Blood in urine or stool</li>
+              <li>Vomiting blood or coughing up blood</li>
+              <li>Severe headache, confusion, weakness, or vision changes</li>
+              <li>Any major injury (especially head injury) when platelet levels are low</li>
+            </ul>
+            <p class="note note--warn">
+              If you notice these, seek urgent care right away.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <h3>How people describe it</h3>
+            <p>
+              People often say ITP feels like “living with uncertainty.”
+              Some have no symptoms at all. Others notice constant bruising or anxiety about bleeding.
+              Both experiences are real — and support matters.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="diagnosis" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>How ITP is diagnosed</h2>
+          <p class="subtitle">Usually through a combination of blood tests and ruling out other causes.</p>
+        </div>
+
+        <div class="grid2">
+          <article class="card reveal">
+            <h3>What doctors often check</h3>
+            <ul class="list">
+              <li>A complete blood count (CBC) to measure platelets</li>
+              <li>A blood smear (looking at blood under a microscope)</li>
+              <li>Other tests to rule out infections, medication effects, or different blood disorders</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Why “ruling out” matters</h3>
+            <p>
+              ITP is often a “diagnosis of exclusion,” meaning clinicians make sure
+              there isn’t another clear reason for low platelets. This can feel frustrating —
+              but it’s also how they make sure the plan is right.
+            </p>
+          </article>
+        </div>
+
+        <div class="callout reveal" role="note">
+          <div class="callout__icon" aria-hidden="true">⟡</div>
+          <div class="callout__content">
+            <h3>Good questions to ask at an appointment</h3>
+            <div class="pillrow" role="list">
+              <span class="pill" role="listitem">What is my platelet count today?</span>
+              <span class="pill" role="listitem">What bleeding signs should I watch for?</span>
+              <span class="pill" role="listitem">What activities are safe right now?</span>
+              <span class="pill" role="listitem">Do we need treatment, or is watching enough?</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="treatment" class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Treatment (in everyday language)</h2>
+          <p class="subtitle">The goal is usually safety — not a “perfect number.”</p>
+        </div>
+
+        <div class="accordion reveal" role="region" aria-label="Treatment options accordion">
+          <details class="acc" open>
+            <summary><span>Sometimes: watchful waiting</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                If bleeding is mild (or absent) and platelet levels are stable, a clinician may recommend
+                careful monitoring instead of immediate medication. This can be the safest option for some people.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary><span>First steps: calming the immune system</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                Many first‑line treatments aim to reduce the immune system’s attack on platelets.
+                Examples include short courses of steroids or a treatment called IVIG (given through a vein) that can raise platelets quickly in some situations.
+              </p>
+              <p class="muted">These choices depend on symptoms, how urgent the situation is, and individual risk factors.</p>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary><span>Helping the body make more platelets</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                Some medications encourage the body to make more platelets. These are often called
+                “TPO receptor agonists.” They don’t fix ITP’s root cause, but they can help keep platelets at a safer level.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary><span>Targeted immune treatments</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                If ITP persists or is difficult to control, clinicians may consider targeted treatments that affect specific immune pathways.
+                One well‑known example is rituximab, which reduces certain immune cells that can contribute to platelet targeting.
+              </p>
+              <p class="muted">There are also newer options being studied and used in some settings.</p>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary><span>In some cases: splenectomy</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                The spleen is often one place where “tagged” platelets are removed.
+                Removing the spleen (splenectomy) can help some people, but it’s a bigger step and not right for everyone.
+                It can also change infection risk long‑term, so it requires careful discussion.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="note reveal">
+          <strong>Real‑life note:</strong> ITP treatment is not one‑size‑fits‑all. Two people can have the same platelet number and need different plans.
+          Your symptoms, lifestyle, and overall health matter.
+        </div>
+      </div>
+    </section>
+
+    <section id="living" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Living with ITP</h2>
+          <p class="subtitle">Practical steps that can help you feel more in control.</p>
+        </div>
+
+        <div class="grid2">
+          <article class="card reveal">
+            <h3>Safety basics</h3>
+            <ul class="list">
+              <li>Know your recent platelet count and what it means for you</li>
+              <li>Ask what pain relievers are safest (some can increase bleeding risk)</li>
+              <li>Have a plan for travel, sports, and emergencies</li>
+              <li>Tell clinicians about ITP before procedures or new medications</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Emotional health matters too</h3>
+            <p>
+              It’s normal to feel anxious, frustrated, or tired of “numbers.”
+              If you’re overwhelmed, you deserve support — from loved ones, a counselor,
+              or a community that understands chronic uncertainty.
+            </p>
+            <p class="muted">You are not “overreacting.” You are responding to something real.</p>
+          </article>
+        </div>
+
+        <div class="callout reveal" role="note">
+          <div class="callout__icon" aria-hidden="true">✶</div>
+          <div class="callout__content">
+            <h3>A gentle reminder</h3>
+            <p>
+              Many people with ITP do well with the right monitoring and care.
+              Awareness can lead to earlier recognition, safer decisions, and better support for families.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>FAQ</h2>
+          <p class="subtitle">Quick answers to common questions.</p>
+        </div>
+
+        <div class="faq reveal">
+          <details class="acc">
+            <summary><span>Is ITP the same as “low platelets” from another cause?</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                Not always. “Low platelets” can happen for many reasons (medications, infections, bone marrow problems, and more).
+                ITP is one specific pattern where the immune system plays a major role.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary><span>Can children “grow out of” ITP?</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                Many children improve over time, sometimes after a short period of illness.
+                Others may have longer‑lasting ITP. Every case is different — and follow‑up matters.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary><span>Does a higher platelet count always mean I’m safe?</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                A platelet count is helpful, but it’s not the whole story. Bleeding symptoms, other health conditions,
+                and medications matter too. Your care team can help interpret the number for your situation.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary><span>Can stress cause ITP?</span><span class="acc__chev" aria-hidden="true">›</span></summary>
+            <div class="acc__body">
+              <p>
+                Stress doesn’t “cause” ITP in a simple way. But stress can affect sleep, immune function, and how hard it feels to cope.
+                Taking care of your mental health is still part of taking care of ITP.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="help" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>When to get help</h2>
+          <p class="subtitle">Trust your instincts. If something feels wrong, get checked.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Seek urgent care now if you have</h3>
+            <ul class="list">
+              <li>Severe headache, confusion, weakness, or trouble speaking</li>
+              <li>Heavy bleeding that won’t stop</li>
+              <li>Blood in vomit, stool, or urine</li>
+              <li>Head injury (especially if platelet levels are low)</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Ask for medical advice soon if you notice</h3>
+            <ul class="list">
+              <li>New unexplained bruising or tiny red/purple dots</li>
+              <li>Frequent nosebleeds or gum bleeding</li>
+              <li>Heavier periods than usual</li>
+              <li>Any bleeding that worries you</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Emergency note</h3>
+            <p>
+              If you’re in the U.S. and you think a situation is an emergency, call <strong>911</strong>.
+              If you’re elsewhere, use your local emergency number.
+            </p>
+          </article>
+        </div>
+
+        <div class="resources reveal" aria-label="Learning resources">
+          <h3>Trusted places to learn more</h3>
+          <p class="muted">These are good starting points for patients and families.</p>
+          <div class="pillrow">
+            <a class="pill pill--link" href="https://www.itppeople.org/" target="_blank" rel="noreferrer">Platelet Disorder Support Association (PDSA)</a>
+            <a class="pill pill--link" href="https://rarediseases.org/rare-diseases/immune-thrombocytopenia/" target="_blank" rel="noreferrer">NORD — ITP overview</a>
+            <a class="pill pill--link" href="https://medlineplus.gov/ency/article/000535.htm" target="_blank" rel="noreferrer">MedlinePlus — ITP overview</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dedication" class="section dedication">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Dedication</h2>
+          <p class="subtitle">This site is made with love, for someone who matters.</p>
+        </div>
+
+        <div class="dedication__card reveal" role="note">
+          <p class="dedication__quote">
+            “We remember not only with our minds, but with the way we choose to care for others.”
+          </p>
+          <p>
+            This website is dedicated to <strong>Nishant Palle</strong>.
+            He is deeply loved and deeply missed. He passed away due to complications from Immune Thrombocytopenia (ITP),
+            and this project exists in his honor — to help other families find clarity, awareness, and support.
+          </p>
+          <p class="muted">
+            If you’re reading this because ITP has touched your life too: you are not alone.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="brand brand--footer">
+          <span class="brand__mark" aria-hidden="true">⟡</span>
+          <span class="brand__name">Understanding ITP</span>
+        </div>
+        <p class="muted">
+          Made to educate and support — not to replace medical care.
+        </p>
+      </div>
+
+      <div class="footer__links" aria-label="Footer links">
+        <a href="#what">Back to top</a>
+        <a href="#dedication">Dedication</a>
+        <a href="#" id="toggleMotion">Reduce motion</a>
+      </div>
+    </div>
+
+    <div class="container footer__fineprint">
+      <p class="muted">
+        Educational content only. If you are worried about bleeding or symptoms, seek medical care.
+      </p>
+      <p class="muted">
+        © <span id="year"></span> • In memory of <strong>Nishant Palle</strong>.
+      </p>
+    </div>
+  </footer>
+  <script>
+// =========================================================
+// Understanding ITP — script
+// Subtle UI helpers: menu, scroll reveal, slider explainer,
+// animated background (particles), reduced motion toggle.
+// =========================================================
+
+(function () {
+  const $ = (q, el = document) => el.querySelector(q);
+
+  // Year in footer
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Mobile nav
+  const navBtn = $("#navbtn");
+  const nav = $("#nav");
+  function setNav(open) {
+    if (!navBtn || !nav) return;
+    navBtn.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("is-open", open);
+  }
+  if (navBtn && nav) {
+    navBtn.addEventListener("click", () => {
+      const open = navBtn.getAttribute("aria-expanded") === "true";
+      setNav(!open);
+    });
+
+    // Close on link click
+    nav.addEventListener("click", (e) => {
+      if (e.target && e.target.tagName === "A") setNav(false);
+    });
+
+    // Close on outside click
+    document.addEventListener("click", (e) => {
+      const open = navBtn.getAttribute("aria-expanded") === "true";
+      if (!open) return;
+      const within = nav.contains(e.target) || navBtn.contains(e.target);
+      if (!within) setNav(false);
+    });
+  }
+
+  // Scroll reveal
+  const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealEls = Array.from(document.querySelectorAll(".reveal"));
+
+  if (!prefersReduced && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    // If reduced motion, show immediately
+    revealEls.forEach(el => el.classList.add("is-visible"));
+  }
+
+  
+  // Scroll progress + section indicator (scrollspy)
+  const progress = $("#scrollProgress");
+  const orbLabel = $("#sectionOrbLabel");
+  const navLinks = Array.from(document.querySelectorAll(".nav a[href^='#']"));
+  const sections = navLinks
+    .map(a => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+
+  function setActiveSection(id){
+    navLinks.forEach(a => {
+      const match = a.getAttribute("href") === "#" + id;
+      a.classList.toggle("is-active", match);
+      if (match) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+
+    if (orbLabel){
+      const sec = document.getElementById(id);
+      const h2 = sec ? sec.querySelector("h2") : null;
+      orbLabel.textContent = h2 ? h2.textContent : "Top";
+    }
+  }
+
+  function updateProgress(){
+    if (!progress) return;
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const max = (doc.scrollHeight - window.innerHeight) || 1;
+    const pct = Math.max(0, Math.min(1, scrollTop / max));
+    progress.style.width = (pct * 100).toFixed(2) + "%";
+  }
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
+
+  if ("IntersectionObserver" in window && sections.length){
+    const spy = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible && visible.target && visible.target.id){
+        setActiveSection(visible.target.id);
+      }
+    }, { threshold: [0.2, 0.35, 0.5, 0.65], rootMargin: "-20% 0px -55% 0px" });
+
+    sections.forEach(s => spy.observe(s));
+  } else if (sections.length){
+    setActiveSection(sections[0].id);
+  }
+
+  // Accessibility: focus section after clicking nav
+  navLinks.forEach(a => {
+    a.addEventListener("click", () => {
+      const target = document.querySelector(a.getAttribute("href"));
+      if (!target) return;
+      target.setAttribute("tabindex", "-1");
+      setTimeout(() => target.focus({ preventScroll: true }), 250);
+    });
+  });
+
+// Slider explainer (educational, not clinical)
+  const plt = $("#plt");
+  const pltVal = $("#pltVal");
+  const riskFill = $("#riskFill");
+  const riskTitle = $("#riskTitle");
+  const riskDesc = $("#riskDesc");
+
+  function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
+  function fmt(n){
+    try { return Number(n).toLocaleString("en-US"); }
+    catch { return String(n); }
+  }
+
+  // Educational ranges (broad, non-prescriptive) in platelets per microliter.
+  // Slider: 0..500,000 in steps of 5,000.
+  function updateRisk(v) {
+    const value = Number(v);
+
+    if (pltVal) pltVal.textContent = fmt(value);
+
+    // Visual meter: lower count => higher alert
+    const alert = clamp(1 - (value / 500000), 0, 1);
+    const h = 18 + Math.round(alert * 82); // 18%..100%
+    if (riskFill) riskFill.style.height = h + "%";
+
+    let title = "Typical range";
+    let desc = "Many people with ITP live full lives — the goal is to reduce bleeding risk and feel safe.";
+
+    if (value < 20000) {
+      title = "Very low level";
+      desc = "Bleeding risk can be higher. If there are symptoms or an injury, seek urgent medical guidance.";
+    } else if (value < 50000) {
+      title = "Lower level";
+      desc = "Some people notice bruising or bleeding. A care plan often focuses on safety in daily life and around procedures.";
+    } else if (value < 150000) {
+      title = "Moderate level";
+      desc = "Many daily activities may be okay, depending on symptoms and your care plan. Numbers are only part of the picture.";
+    } else {
+      title = "Higher level";
+      desc = "For many people, bleeding risk is lower here — but symptoms, medications, and personal health still matter.";
+    }
+
+    if (riskTitle) riskTitle.textContent = title;
+    if (riskDesc) riskDesc.textContent = desc;
+  }
+
+  if (plt) {
+    updateRisk(plt.value);
+    plt.addEventListener("input", (e) => updateRisk(e.target.value));
+  }
+
+// Reduced motion toggle (also pauses canvas animation)
+  let motionEnabled = !prefersReduced;
+  const toggleMotion = $("#toggleMotion");
+  if (toggleMotion) {
+    toggleMotion.addEventListener("click", (e) => {
+      e.preventDefault();
+      motionEnabled = !motionEnabled;
+      toggleMotion.textContent = motionEnabled ? "Reduce motion" : "Enable motion";
+    });
+  }
+
+  // Animated background (subtle particles) — respects reduced motion
+  const canvas = $("#bg");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  const DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  let W = 0, H = 0;
+
+  function resize() {
+    W = Math.floor(window.innerWidth);
+    H = Math.floor(window.innerHeight);
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  // Seed particles
+  const count = Math.floor((W * H) / 35000); // density-based
+  const particles = [];
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: 0.7 + Math.random() * 1.6,
+      vx: (-0.15 + Math.random() * 0.3),
+      vy: (-0.10 + Math.random() * 0.2),
+      a: 0.08 + Math.random() * 0.14
+    });
+  }
+
+  function step() {
+    // If user toggled motion off, just draw a still frame occasionally.
+    ctx.clearRect(0, 0, W, H);
+
+    // Soft vignette
+    const g = ctx.createRadialGradient(W * 0.5, H * 0.4, 40, W * 0.5, H * 0.4, Math.max(W, H) * 0.75);
+    g.addColorStop(0, "rgba(126,227,255,0.08)");
+    g.addColorStop(0.55, "rgba(166,255,207,0.04)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // Particles & connections
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      if (motionEnabled) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < -20) p.x = W + 20;
+        if (p.x > W + 20) p.x = -20;
+        if (p.y < -20) p.y = H + 20;
+        if (p.y > H + 20) p.y = -20;
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+      ctx.fill();
+
+      // faint lines
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 120 * 120) {
+          const a = (1 - Math.sqrt(d2) / 120) * 0.05;
+          ctx.strokeStyle = `rgba(126,227,255,${a})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  // If prefers reduced motion, start with motion disabled
+  if (prefersReduced) motionEnabled = false;
+
+  step();
+})();
+
+  </script>
+</body>
+</html>
